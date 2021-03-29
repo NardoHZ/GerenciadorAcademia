@@ -1,0 +1,79 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Mensalidades</h2>
+        <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Filtro</span>
+            </div>
+            <select id="select" name="marca" class="form-control" required>
+                <option value="/administrador/mensalidades/aberto">Em aberto</option>
+                <option selected value="/administrador/mensalidades/atraso">Em atraso</option>
+                <option value="/administrador/mensalidades/pago">Pagas</option>
+            </select>
+        </div>
+        <hr>
+
+        <div class="form-group" id="filtros">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Filtro</span>
+                </div>
+                <input id="buscarNome" type="text" class="form-control  d-none d-md-block" placeholder="Nome">
+                <input id="buscarCPF" type="text" class="form-control  d-none d-sm-block" placeholder="CPF">
+                <input id="buscarEmail" type="text" class="form-control" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="table-responsive-md tabelas">
+            <table class="table table-sm" id="tabela">
+                <thead class="tabela-head">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>CPF</th>
+                        <th>Valor</th>
+                        <th>Vencimento</th>
+                        <th class="ocultar-colunas">Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% mensalidades.forEach(mensalidade => { %>
+
+                    <% var v = mensalidade.valor %>
+                    <% var real = v.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+
+                    <% if(mensalidade.status == 'Em atraso'){ %>
+                    <tr class="tabelas-linhas">
+                        <td> <%= mensalidade.cliente.nome %> </td>
+                        <td> <%= mensalidade.cliente.sobrenome %> </td>
+                        <td> <%= mensalidade.cliente.cpf %> </td>
+                        <td> <%= real %> </td>
+                        <td> <input type="date" value="<%= mensalidade.dataVencimento %>" disabled> </td>
+                        <td class="ocultar-colunas"> <%= mensalidade.status %> </td>
+                        <td>
+                            <a href="/administrador/mensalidades/detalhes/<%= mensalidade.id %>"
+                                class="btn btn-sm btn-success">Detalhes</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <form class="d-inline" action="/administrador/mensalidades/listarClientesAntecipacao" method="GET">
+            <button class="btn btn-info mb-2">Antecipar mensalidade</button>
+        </form>
+        <form class="d-inline" action="/administrador/mensalidades/listarClientesAlteracaoVencimento" method="GET">
+            <button class="btn btn-info mb-2">Alterar Vencimento</button>
+        </form>
+    </div>
+</body>
+
+<%- include ../../partials/footer.ejs %>

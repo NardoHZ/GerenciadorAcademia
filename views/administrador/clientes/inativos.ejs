@@ -1,0 +1,87 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Clientes</h2>
+
+        <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Filtro</span>
+            </div>
+            <select id="select" name="marca" class="form-control" required>
+                <option value="/administrador/clientes/listar">Todos</option>
+                <option value="/administrador/clientes/ativos">Ativos</option>
+                <option selected value="/administrador/clientes/inativos">Inativos</option>
+            </select>
+        </div>
+        <hr>
+
+        <div class="form-group" id="filtros">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Filtro</span>
+                </div>
+                <input id="buscarNome" type="text" class="form-control  d-none d-md-block" placeholder="Nome">
+                <input id="buscarCPF" type="text" class="form-control  d-none d-sm-block" placeholder="CPF">
+                <input id="buscarEmail" type="text" class="form-control" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="table-responsive-md tabelas">
+            <table class="table table-sm" id="tabela">
+                <thead class="tabela-head">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenone</th>
+                        <th>CPF</th>
+                        <th class="ocultar-colunas">Pacote</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% clientes.forEach(cliente => { %>
+                    <% if(cliente.ativo == 0 ) { %>
+                    <tr class="tabelas-linhas">
+                        <td> <%= cliente.nome %> </td>
+                        <td> <%= cliente.sobrenome %> </td>
+                        <td> <%= cliente.cpf %> </td>
+                        <td class="ocultar-colunas">
+                            <% if(cliente.pacote != null){ %>
+                            <%= cliente.pacote.nome %>
+                            <% } else { %>
+                            Nenhum
+                            <% } %>
+                        </td>
+                        <td width="180px">
+                            <a href="/administrador/clientes/detalhes/<%= cliente.id %>"
+                                class="btn btn-sm btn-success ">Detalhes</a>
+                            <form class="float-right" action="/administrador/clientes/delete" method="POST"
+                                onsubmit="confirmarDelecao(event, this) ">
+                                <input type="hidden" name="id" value="<%= cliente.id %>">
+                                <button class="btn btn-danger btn-sm ml btnDeletarCliente">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-info" href="/administrador/clientes/cadastro">Cadastrar cliente</a>
+    </div>
+</body>
+<script>  
+    function confirmarDelecao(event, form) {
+        event.preventDefault();
+        var decisao = confirm("Você deseja realizar esta ação?");
+        if (decisao) {
+            form.submit();
+        }
+    }
+</script>
+
+<%- include ../../partials/footer.ejs %>

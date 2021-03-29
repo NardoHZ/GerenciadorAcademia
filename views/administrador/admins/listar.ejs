@@ -1,0 +1,76 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Administradores</h2>
+
+        <br>
+
+        <div class="form-group" id="filtros">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Filtro</span>
+                </div>
+                <input id="buscarNome" type="text" class="form-control d-none d-md-block" placeholder="Nome">
+                <input id="buscarCPF" type="text" class="form-control  d-none d-sm-block" placeholder="CPF">
+                <input id="buscarEmail" type="text" class="form-control" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="table-responsive-md tabelas">
+            <table class="table table-sm" id="tabela">
+                <thead class="tabela-head">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>CPF</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <% administradores.forEach(administrador => { %>
+                    <tr class="tabelas-linhas">
+                        <td> <%= administrador.nome %> </td>
+                        <td> <%= administrador.sobrenome %> </td>
+                        <td> <%= administrador.cpf %> </td>
+                        <td> <%= administrador.email %> </td>
+                        <td>
+                            <% if( administrador.ativo == 1){ %>
+                                Ativo
+                            <%} else {%>
+                                Inativo
+                            <%}%>
+                        </td>
+                        <td width="180px">
+                            <a href="/administrador/admins/detalhes/<%= administrador.id %>"
+                            class="btn btn-sm btn-success">Detalhes</a>
+                            <form class="float-right" action="/administrador/admins/delete" method="POST"
+                                onsubmit="confirmarDelecao(event, this) ">
+                                <input type="hidden" name="id" value="<%= administrador.id %>">
+                                <button class="btn btn-danger btn-sm ml btnDeletarAdministrador">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-info" href="/administrador/admins/cadastro">Cadastrar Administrador</a>
+    </div>
+</body>
+<script>  
+    function confirmarDelecao(event, form) {
+        event.preventDefault();
+        var decisao = confirm("Você deseja realizar esta ação?");
+        if (decisao) {
+            form.submit();
+        }
+    }
+</script>
+
+<%- include ../../partials/footer.ejs %>

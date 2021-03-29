@@ -1,0 +1,482 @@
+/* ============================== */
+
+
+/* ======FORMATAÇÕES GERAIS====== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 308px;
+    position: relative;
+    font-family: 'Corier New', Arial, Helvetica;
+}
+
+.fonte-perfil {
+    font-family: 'Corier New', Arial, Helvetica;
+}
+
+.titulos {
+    text-align: center;
+    color: #fff;
+    font-size: 2.2em;
+}
+
+#filtros input{
+    height: 40px;
+    border:1px solid #bbb2b2;
+}
+
+/* ======FORMATAÇÕES DE LOGIN====== */
+
+#bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+}
+
+#bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    z-index: 1;
+}
+
+.jumbotron {
+    margin-top: -25px;
+    height: 400px;
+}
+
+.logo-login{
+    width: 100%;
+}
+
+.login-texto {
+    margin: 0 auto;
+    margin-top: 9%;
+    padding: 0;
+}
+
+.login-titulo {
+    padding-top: 30px;
+}
+
+.main-content {
+    padding-top: 80px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.main-section {
+    margin: 0 auto;
+    margin-top: 30%;
+    padding: 0;
+}
+
+.modal-content {
+    background-color: rgba(20, 20, 20);
+    opacity: .97;
+    padding: 0 20px 40px;
+    box-shadow: 0px 0px 3px #848484;
+}
+
+.user-img img {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 3px #848484;
+    border-radius: 50%;
+}
+
+.form-group input {
+    height: 50px;
+    font-size: 18px;
+    border: 0px;
+    padding-left: 40px;
+    border-radius: 5px;
+}
+
+.inputIcon {
+    position: relative;
+}
+
+.inputIcon i {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 9px 8px;
+    color: #aaa;
+    transition: 2s;
+}
+
+.inputIcon input[type=email]:focus+i,
+.inputIcon input[type=password]:focus+i {
+    color: dodgerblue;
+}
+
+/* ===================== */
+
+/* FORMATAÇÕES DO NAVBAR */
+
+.header {
+    height: 55px;
+    width: 100%;
+    margin-bottom: -55px;
+    color: #ffffff;
+    z-index: 4;
+}
+
+.header a {
+    color: #000;
+    font-family: cursive;
+}
+
+.icon-user {
+    font-size: 1.5em;
+    margin-right: 2px;
+}
+
+.navbar-color {
+    background-color: rgba(20, 20, 20);
+}
+
+.logo {
+    width: 125px;
+    height: 55px;
+    margin-top: 10px;
+    margin-left: -10px;
+    background: url('../img/logo.png') no-repeat center;
+    text-indent: -3000px;
+}
+ 
+.menu-topo a {
+    border-right: 1px solid #333;
+    padding: 5px;
+}
+
+.menu-topo i {
+    color: #D3D3D3;
+    margin: 0 4px;
+    font-size: 18px;
+}
+
+#border-none {
+    border-right: none;
+}
+
+#menu-topo li {
+    padding: 4px 0;
+}
+
+#menu-topo li:hover {
+    background: #363636;
+}
+
+#perfil ul {
+    margin-top: 10px;
+}
+
+/* ====================== */
+
+
+
+/* FORMATAÇÕES DO SIDEBAR */
+
+.side-bar {
+    width: 100%;
+    background-color: #141414;
+    height: 100vh;
+    z-index: 3;
+    padding-top: 55px;
+    position: fixed;
+}
+
+.side-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-bar ul li {
+    padding: 20px 10px;
+    border-bottom: 1px solid #333;
+}
+
+.side-bar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.side-bar ul li i {
+    color: #D3D3D3;
+}
+
+#side-bar li:hover {
+    background: #363636;
+}
+
+/* =========RELATÓRIOS======= */
+
+.relatorio-total-gasto {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -25px;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+
+/* ========================== */
+
+
+/* ===== TABELAS ============== */
+.tabelas {
+    overflow: auto;
+    margin-bottom: 15px;
+    max-height: 255px;
+}
+
+.table {
+    min-width: 700px;
+}
+
+.titulo-tabelas {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.tabelas-linhas {
+    background-color: #363636;
+    color: #fff;
+}
+
+.tabela-head {
+    background-color: #201f1f;
+    color: #fff;
+}
+
+.tabelas tr {
+    text-align: center;
+}
+
+.tabelas td {
+    font-size: 17px;
+    text-align: center;
+}
+
+.tabelas tbody tr:hover {
+    background-color: #504e4e;
+}
+
+.tabelas-linhas input {
+    background: transparent;
+    text-align: center; 
+    border: none;
+    color: #fff;
+    width: 150px;
+    margin-right: -55px;
+}
+
+/* FORMULÁRIOS */
+
+.formularios {
+    color: #fff;
+    padding: 15px;
+}
+
+.formularios input, #select, #buscar, #selectUF, #selectPacote, #selectPagamento{
+    height: 40px;
+    padding-left: 10px;
+    border: 2px solid rgb(192, 187, 187);
+}
+
+.formularios label {
+    font-size: 17px;
+}
+
+.btnDeletarCliente, .btnDeletarAdministrador {
+    margin-left: -25px;
+}
+
+.jumbotronBackground {
+    text-align: center;
+    color: rgb(255, 251, 251);
+    background-color: rgb(26, 25, 25);
+    opacity: 0.8;
+}
+
+/* ======================================== */
+
+
+/* FORMATAÇÕES DE RESPONSIVIDADE ESTRUTURAL */
+
+@media screen and (min-width: 0px) {
+    .side-bar {
+        width: 80px;
+    }
+    .side-bar ul li {
+        text-align: center;
+    }
+    .side-bar ul li span:nth-child(2) {
+        display: none;
+    }
+    .side-bar ul li i {
+        font-size: 26px;
+    }
+    .main-content {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    .side-bar {
+        display: none;
+    }
+    .menu-topo {
+        display: flex;
+    }
+    #perfil {
+        background-color: rgba(20, 20, 20);
+        padding: 0 15px;
+        margin: -15px -16px;
+        border-top: 1px dotted #aaa;
+    }
+    .logo {
+        margin-top: -10px;
+    }
+    .navbar-toggler {
+        margin-top: 0px;
+        margin-bottom: 22px;
+    }
+    .ocultar-colunas {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 356px) {
+    #jumbotron {
+        display: block;
+    }
+    #perfil {
+        background-color: rgba(20, 20, 20);
+        padding: 0 15px;
+        margin: 0 -16px;
+        margin-top: -15px;
+    }
+    .logo {
+        margin-top: -12px;
+        display: block;
+    }
+    .navbar-toggler {
+        margin-top: 0px;
+    }
+}
+
+
+@media screen and (min-width: 576px) {
+    .side-bar {
+        width: 80px;
+    }
+    .side-bar ul li {
+        text-align: center;
+    }
+    .side-bar ul li span:nth-child(2) {
+        display: none;
+    }
+    .side-bar ul li i {
+        font-size: 26px;
+    }
+    .main-content {
+        margin-left: 95px;
+        margin-right: 15px;
+    }
+    .side-bar {
+        display: inline;
+    }
+    .menu-topo {
+        display: none;
+    }
+    #perfil {
+        background-color: transparent;
+    }
+    .logo{
+        margin-top: 10px;
+    }
+    .ocultar-colunas {
+        display: table-cell;
+    }
+}
+
+/* @media screen and (min-width: 570px){
+    .side-bar {
+        height: 1200px;
+    }
+}
+
+@media screen and (min-width: 606px){
+    .side-bar {
+        height: 1175px;
+    }
+}
+
+@media screen and (min-width: 623px){
+    .side-bar {
+        height: 1150px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .side-bar {
+        height: 710px;
+    }
+}
+
+@media screen and (min-width: 780px){
+    .side-bar {
+        height: 690px;
+    }
+}
+
+@media screen and (min-width: 993px){
+    .side-bar {
+        height: 676px;
+    }
+}
+
+@media screen and (min-width: 1219px){
+    .side-bar {
+        height: 625px;
+    }
+}
+
+@media screen and (min-width: 1366px){
+    .side-bar {
+        height: 100vh;
+    }
+} */
+
+@media screen and (min-width: 1000px) {
+    .side-bar {
+        width: 200px;
+    }
+    .side-bar ul li {
+        text-align: left;
+    }
+    .side-bar ul li span:nth-child(2) {
+        display: inline;
+    }
+    .side-bar ul li i {
+        font-size: 16px;
+    }
+    .main-content {
+        margin-left: 215px;
+        margin-right: 15px;
+    }
+}

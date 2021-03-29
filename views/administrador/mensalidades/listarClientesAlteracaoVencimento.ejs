@@ -1,0 +1,61 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Clientes</h2>
+
+        <br>
+
+        <div class="form-group" id="filtros">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Filtro</span>
+                </div>
+                <input id="buscarNome" type="text" class="form-control d-none d-md-block" placeholder="Nome">
+                <input id="buscarCPF" type="text" class="form-control  d-none d-sm-block" placeholder="CPF">
+                <input id="buscarEmail" type="text" class="form-control" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="table-responsive-md tabelas">
+            <table class="table table-sm" id="tabela">
+                <thead class="tabela-head">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>CPF</th>
+                        <th>Email</th>
+                        <th class="ocultar-colunas">Pacote</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <% clientes.forEach(cliente => { %>
+                    <tr class="tabelas-linhas">
+                        <td> <%= cliente.nome %> </td>
+                        <td> <%= cliente.sobrenome %> </td>
+                        <td> <%= cliente.cpf %> </td>
+                        <td> <%= cliente.email %> </td>
+                        <td class="ocultar-colunas">
+                            <% if(cliente.pacote != null){ %>
+                                <%= cliente.pacote.nome %>
+                            <% } else { %>
+                                Nenhum
+                            <% } %>
+                        </td>
+                        <td>
+                            <a href="/administrador/mensalidades/alterarVencimento/<%= cliente.id %>"
+                                class="btn btn-sm btn-success">Selecionar</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<%- include ../../partials/footer.ejs %>

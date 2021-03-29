@@ -1,0 +1,38 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Cadastro de Pacotes</h2>
+        <hr>
+        <div class="formularios w-50">
+            <form action="/pacote/salvar" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-7">
+                        <label for="inputNomePacote">Nome do pacote</label>
+                        <input type="text" class="form-control" name="inputNome" placeholder="Nome"
+                            id="inputNomePacote" required>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="inputDesconto">Valor do desconto</label>
+                        <input type="text" class="form-control" name="inputDesconto" id="inputDesconto" required>
+                    </div>
+                </div>
+                <div class=" form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputDescricao">Descriçao do pacote</label>
+                            <textarea name="inputDescricao" class="form-control" rows="3" placeholder="Descrição" id="inputDescricao" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        $('#inputDesconto').mask("9999", { placeholder: "R$" });
+    </script>
+</body>
+<%- include ../../partials/footer.ejs %>

@@ -1,0 +1,139 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Cadastro de Cliente</h2>
+        <hr>
+        <div class="formularios">
+            <form action="/clientes/salvar" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputNome">Nome</label>
+                        <input type="text" class="form-control" name="inputNome" id="inputNome" placeholder="Nome"
+                            required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSobrenome">Sobrenome</label>
+                        <input type="text" class="form-control" name="inputSobrenome" placeholder="Sobrenome"
+                            id="inputSobrenome" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="selectSexo">Sexo</label>
+                        <select class="form-control" name="selectSexo" id="selectSexo">
+                            <option selected disabled value="">Selecione</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputDate">Data de Nascimento</label>
+                        <input type="date" class="form-control" name="inputDate" id="inputDate">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputCPF">CPF</label>
+                        <input type="text" class="form-control" name="inputCPF" id="inputCPF">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputTelefone">Telefone</label>
+                        <input type="text" class="form-control" name="inputTelefone" id="inputTelefone">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" name="inputEmail" placeholder="example@email.com"
+                            id="inputEmail">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">CEP</label>
+                        <input type="text" class="form-control" name="inputCEP" id="inputCEP">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputLogradouro">Logradouro</label>
+                        <input type="text" class="form-control" name="inputLogradouro" placeholder="Rua"
+                            id="inputLogradouro">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputCidade">Cidade</label>
+                        <input type="text" class="form-control" name="inputCidade" placeholder="Cidade" id="inputCidade"
+                        >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputBairro">Bairro</label>
+                        <input type="text" class="form-control" name="inputBairro" placeholder="Bairro" id="inputBairro"
+                            >
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputNumero">Número</label>
+                        <input type="number" class="form-control" name="inputNumero" placeholder="00" id="inputNumero" min="1">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="selectUF">UF</label>
+                        <select class="form-control" id="selectUF" name="selectUF">
+                            <option selected disabled value="NN">Selecione</option>
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="selectPacote">Pacote</label>
+                        <select class="form-control" name="selectPacote" id="selectPacote" required>
+                            <option selected disabled value="">Selecione</option>
+                            <% pacote.forEach(pacote => { %>
+                            <option value="<%= pacote.id %>"><%= pacote.nome %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="selectPagamento">Forma de Pagamento</label>
+                        <select class="form-control" name="selectPagamento" id="selectPagamento" required>
+                            <option selected disabled value="">Selecione</option>
+                            <option value="Cartão">Cartão</option>
+                            <option value="Depósito">Depósito</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Transferência">Transferência</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+        </div>
+    </div>
+    <script>
+        $('#inputCPF').mask("999.999.999-99", { placeholder: "000.000.000-00" });
+        $('#inputTelefone').mask("(99)99999-9999", { placeholder: "(00)00000-0000" });
+        $('#inputCEP').mask("99999-999", { placeholder: "00000-000" });
+    </script>
+</body>
+<%- include ../../partials/footer.ejs %>

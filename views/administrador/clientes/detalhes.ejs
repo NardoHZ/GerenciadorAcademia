@@ -1,0 +1,136 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Detalhes do Cliente</h2>
+        <hr>
+        <div class="formularios">
+            <form action="/administrador/clientes/status/update" method="POST"
+                onsubmit="confirmarAlteracaoStatus(event, this)">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputNome">Nome</label>
+                        <input value="<%= cliente.nome %>" type="text" class="form-control" name="inputNome" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSobrenome">Sobrenome</label>
+                        <input value="<%= cliente.sobrenome %>" type="text" class="form-control" name="inputSobrenome"
+                            disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSobrenome">Sexo</label>
+                        <input value="<%= cliente.sexo %>" type="text" class="form-control" name="inputSobrenome"
+                            disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputDate">Data de Nascimento</label>
+                        <input value="<%= cliente.dataNascimento %>" type="date" class="form-control" name="inputDate"
+                            disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputCPF">CPF</label>
+                        <input value="<%= cliente.cpf %>" type="text" class="form-control" name="inputCPF" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputTelefone">Telefone</label>
+                        <input value="<%= cliente.telefone %>" type="text" class="form-control" name="inputTelefone"
+                            disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail">Email</label>
+                        <input value="<%= cliente.email %>" type="email" class="form-control" name="inputEmail"
+                            disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">CEP</label>
+                        <input value="<%= cliente.enderecocliente.cep %>" type="text" class="form-control"
+                            name="inputCEP" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputLogradouro">Logradouro</label>
+                        <input value="<%= cliente.enderecocliente.logradouro %>" type="text" class="form-control"
+                            name="inputLogradouro" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputCidade">Cidade</label>
+                        <input value="<%= cliente.enderecocliente.cidade %>" type="text" class="form-control"
+                            name="inputCidade" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputBairro">Bairro</label>
+                        <input value="<%= cliente.enderecocliente.bairro %>" type="text" class="form-control name="
+                            inputBairro" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputNumero">Número</label>
+                        <input value="<%= cliente.enderecocliente.numero %>" type="number" class="form-control"
+                            name="inputNumero" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputUF">UF</label>
+                        <select class="form-control" name="" id="selectUF" disabled>
+                            <option value=""><%= cliente.enderecocliente.uf %></option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputPacote">Pacote</label>
+                        <select class="form-control" name="" id="selectPacote" disabled>
+                            <option value="">
+                                <% if(cliente.pacote != null){ %>
+                                <%= cliente.pacote.nome %>
+                                <% } else { %>
+                                Nenhum
+                                <% } %>
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputStatus">Status</label>
+                        <% if(cliente.ativo == 1){ %>
+                        <input value="Ativo" type="text" class="form-control" disabled>
+                        <% }else{ %>
+                        <input value="Inativo" type="text" class="form-control" disabled>
+                        <% } %>
+                    </div>
+                </div>
+                <div class=" form-row">
+                    <div class="form-group col-md-12">
+                        <input type="hidden" name="inputStatus" id="" value="<%= cliente.ativo %>">
+                        <input type="hidden" name="inputID" id="" value="<%= cliente.id %>">
+                        <div>
+                            <a href="/administrador/clientes/editar/<%= cliente.id %>"
+                                class="btn btn-warning mr-1">Editar</a>
+                            <% if(cliente.ativo == 1){ %>
+                            <button class="btn btn-danger">Inativar</button>
+                            <% }else{ %>
+                            <button class="btn btn-success">Ativar</button>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<%- include ../../partials/footer.ejs %>
+<script>
+    function confirmarAlteracaoStatus(event, form) {
+        event.preventDefault();
+        var decisao = confirm("Você deseja realizar esta ação?");
+        if (decisao) {
+            form.submit();
+        }
+    }
+</script>

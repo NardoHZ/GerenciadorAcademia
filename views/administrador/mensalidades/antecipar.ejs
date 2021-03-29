@@ -1,0 +1,91 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Antecipar Mensalidade</h2>
+        <br>
+
+        <div class="table-responsive-md tabelas">
+            <table class="table table-sm" id="tabela">
+                <thead class="tabela-head">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>CPF</th>
+                        <th>Valor</th>
+                        <th>Vencimento</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% mensalidades.forEach(mensalidade => { %>
+                    <% var d = new Date(mensalidade.dataVencimento) %>
+                    <% var dataAtualizada = (d.getDate() + 1) + "/" + (d.getMonth()+1) + "/" + d.getFullYear(); %>
+
+                    <% var v = mensalidade.valor %>
+                    <% var real = v.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+
+                    <tr class="tabelas-linhas">
+                        <td> <%= cliente.nome %> </td>
+                        <td> <%= cliente.sobrenome %> </td>
+                        <td> <%= cliente.cpf %> </td>
+                        <td> <%= real %> </td>
+                        <td> <%= dataAtualizada %> </td>
+                        <td> <%= mensalidade.status %> </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <div class="formularios" style="margin-top: -15px;">
+            <form action="/mensalidades/antecipar" method="POST" onsubmit="confirmarAntecipacao(event, this)">
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="selectPacote">Pacote</label>
+                        <select class="form-control" name="selectPacote" id="selectPacote" required>
+                            <option selected disabled value="">Selecione</option>
+                            <% pacotes.forEach(pacote => { %>
+                            <option value="<%= pacote.id %>"><%= pacote.nome %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputDataVencimento">Data de Antecipação</label>
+                        <input value="" type="date" class="form-control" name="inputDataVencimento"
+                            id="inputDataVencimento" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="selectPagamento">Forma de Pagamento</label>
+                        <select class="form-control" name="selectPagamento" id="selectPagamento" required>
+                            <option selected disabled value="">Selecione</option>
+                            <option value="Cartão">Cartão</option>
+                            <option value="Depósito">Depósito</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Transferência">Transferência</option>
+                        </select>
+                    </div>
+                    <input type="hidden" value="<%= cliente.id %>" name="inputID">
+                </div>
+                <button type="submit" class="btn btn-warning">Antecipar</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+<%- include ../../partials/footer.ejs %>
+<script>
+    function confirmarAntecipacao(event, form) {
+        event.preventDefault();
+        var decisao = confirm("Você deseja antecipar esta mensalidade?");
+        if (decisao) {
+            form.submit();
+        }
+    }
+</script>

@@ -1,0 +1,126 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Alteração de Dados</h2>
+        <br>
+        <div class="formularios">
+            <form method="POST" action="/administrador/dados/update">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputNome">Nome</label>
+                        <input name="inputNome" value="<%= administrador.nome %>" type="text" class="form-control"
+                            id="inputNome" placeholder="Nome" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSobrenome">Sobrenome</label>
+                        <input name="inputSobrenome" value="<%= administrador.sobrenome %>" type="text" class="form-control"
+                            placeholder="Sobrenome" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="selectSexo">Sexo</label>
+                        <select class="form-control" name="selectSexo" id="selectSexo" required>
+                            <% if(administrador.sexo === 'Masculino'){ %>
+                            <option selected value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <% }else { %>
+                            <option selected value="Feminino">Feminino</option>
+                            <option value="Masculino">Masculino</option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputDate">Data de Nascimento</label>
+                        <input name="inputDate" value="<%= administrador.dataNascimento %>" type="date" class="form-control"
+                            id="inputDate" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputCPF">CPF</label>
+                        <input name="inputCPF" value="<%= administrador.cpf %>" type="text" class="form-control" id="inputCPF"
+                            required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputTelefone">Telefone</label>
+                        <input name="inputTelefone" value="<%= administrador.telefone %>" type="text" class="form-control"
+                            id="inputTelefone" placeholder="(99)9999-9999" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail">Email</label>
+                        <input name="inputEmail" value="<%= administrador.email %>" type="email" class="form-control"
+                            id="inputEmail" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">CEP</label>
+                        <input value="<%= administrador.enderecoadministrador.cep %>" type="text" class="form-control" name="inputCEP">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputLogradouro">Logradouro</label>
+                        <input value="<%= administrador.enderecoadministrador.logradouro %>" type="text" class="form-control" name="inputLogradouro">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputCidade">Cidade</label>
+                        <input value="<%= administrador.enderecoadministrador.cidade %>" type="text" class="form-control" name="inputCidade">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputBairro">Bairro</label>
+                        <input value="<%= administrador.enderecoadministrador.bairro %>" type="text" class="form-control" name="inputBairro">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputNumero">Número</label>
+                        <input value="<%= administrador.enderecoadministrador.numero %>" type="number" class="form-control" name="inputNumero">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputUF">UF</label>
+                        <select class="form-control" name="selectUF" id="selectUF">
+                            <option selected disabled value="">Selecione</option>
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-2" style="color: red;">
+                    <%= messages.emailExistente %>
+                </div>
+                <button class="btn btn-success">Atualizar</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $('#inputCPF').mask("999.999.999-99", { placeholder: "000.000.000-00" });
+        $('#inputTelefone').mask("(99)99999-9999", { placeholder: "(00)00000-0000" });
+    </script>
+</body>
+<%- include ../../partials/footer.ejs %>

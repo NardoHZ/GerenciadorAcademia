@@ -1,0 +1,69 @@
+<body>
+    <nav class="header navbar navbar-expand-sm navbar-dark sticky-top navbar-color">
+
+        <!-- LOGO -->
+        <div class="navbar-brand">
+            <a href="/administrador/home">
+                <h3 class="logo"></h3>
+            </a>
+        </div>
+
+        <!-- MENU HAMBURGUER -->
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#perfil">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- BARRA DE MENU -->
+        <div class="collapse navbar-collapse" id="perfil">
+            <ul class="navbar-nav ml-auto">
+
+                <!-- MENU TOPO -->
+                <div class="menu-topo m-auto" id="menu-topo">
+                    <li>
+                        <a title="Home" href="/administrador/home"><span><i class="fas fa-home"></i></span></a>
+                    </li>
+                    <% if(admin.tipo === 'chefe'){ %>
+                    <li>
+                        <a title="Administrador" href="/administrador/admins/listar"><span><i
+                                    class="fas fa-users-cog"></i></span></a>
+                    </li>
+                    <% } %>
+                    <li>
+                        <a title="Clientes" href="/administrador/clientes/listar"><span><i
+                                    class="fas fa-users"></i></span></a>
+                    </li>
+                    <li>
+                        <a title="Exame" href="/administrador/exame/clientes"><span><i
+                                    class="fas fa-dumbbell"></i></span></a>
+                    </li>
+                    <li>
+                        <a title="Mensalidades" href="/administrador/mensalidades/aberto"><span><span><i
+                                        class="fas fa-money-check-alt"></i></span></a>
+                    </li>
+                    <li>
+                        <a title="Pacotes" href="/administrador/pacotes/listar"><span><i
+                                    class="fas fa-percent"></i></span></a>
+                    </li>
+                    <li>
+                        <a title="Relatórios" id="border-none" href="/administrador/relatorios/listar"><span><i
+                                    class="fas fa-chart-pie"></i></span></a>
+                    </li>
+                </div>
+
+                <!-- PERFIL -->
+                <li class="nav-item dropdown mb-2">
+                    <a href="#" class="nav-link dropdown-toggle text-light" data-toggle="dropdown">
+                        <span class="icon-user"><i class="fas fa-user-circle"></i></span>
+                        <span class="fonte-perfil"><%= admin.nome %> <%= admin.sobrenome %></span>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="/administrador/perfil" class="dropdown-item">Meus Dados</a>
+                        <a href="/administrador/ferramentas" class="dropdown-item">Ferramentas</a>
+                        <a href="/logout" class="dropdown-item">Sair</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</body>

@@ -1,0 +1,148 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Academia</h2>
+        <br>
+        <div class="formularios">
+            <form id="formularioAcademia" method="POST" action="/atualizarAcademia">
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputNome">Nome</label>
+                        <input name="inputNome" value="<%= academia.nome %>" type="text" class="form-control"
+                            id="inputNome" required disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <% var valorString = academia.valor%>
+                        <% var valorFloat = parseFloat(valorString) %>
+                        <% var valor = valorFloat.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+
+                        <label for="inputValor">Valor da Mensalidade</label>
+
+                        <input id="inputValorFormatado" value="<%= valor %>" type="text" class="form-control"
+                            name="inputValor" disabled>
+                        <input id="inputValor" value="<%= valorFloat %>" type="text" class="form-control"
+                            name="inputValor" style="display: none;" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputLogradouro">Logradouro</label>
+                        <input id="inputLogradouro" value="<%= academia.enderecoacademium.logradouro %>" type="text"
+                            class="form-control" name="inputLogradouro" required disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputNumero">Número</label>
+                        <input id="inputNumero" value="<%= academia.enderecoacademium.numero %>" type="number"
+                            class="form-control" name="inputNumero" required disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputCidade">Cidade</label>
+                        <input id="inputCidade" value="<%= academia.enderecoacademium.cidade %>" type="text"
+                            class="form-control" name="inputCidade" required disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputBairro">Bairro</label>
+                        <input id="inputBairro" value="<%= academia.enderecoacademium.bairro %>" type="text"
+                            class="form-control" name="inputBairro" required disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">CEP</label>
+                        <input id="inputCEP" value="<%= academia.enderecoacademium.cep %>" type="text"
+                            class="form-control" name="inputCEP" required disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="selectUFAtual">UF</label>
+                        <select style="height: 40px;" class="form-control" name="" id="selectUFAtual" disabled>
+                            <option value=""><%= academia.enderecoacademium.uf %></option>
+                        </select s>
+
+                        <select class="form-control" id="selectUF" name="selectUF" style="display: none;" required>
+                            <option selected disabled value="NN">Selecione</option>
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
+                    </div>
+
+                </div>
+                <button id="salvarDados" style="display: none;" class="btn btn-warning">Atualizar</button>
+            </form>
+            <button id="editarDados" class="btn btn-warning">Editar dados</button>
+            <button style="display: inline;" id="bntInserirGastos" class="btn btn-info">Inserir Gastos</button>
+        </div>
+
+        <div style="display: none;" id="formularioGastos" class="formularios">
+            <form action="/inserirGastos" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputValor">Valor</label>
+                        <input type="text" placeholder="R$ 0,00" name="inputValor" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputDescricao">Descrição</label>
+                        <input type="text" placeholder="Descrição" name="inputDescricao" class="form-control" required>
+                    </div>
+                </div>
+                <button class="btn btn-warning">Inserir</button>
+            </form>
+        </div>
+
+    </div>
+    </div>
+</body>
+<%- include ../../partials/footer.ejs %>
+<script>
+    document.getElementById("editarDados").addEventListener('click', () => {
+        document.getElementById("inputNome").removeAttribute("disabled")
+        document.getElementById("inputValorFormatado").style.display = 'none'
+        document.getElementById("inputValor").style.display = 'inline'
+        document.getElementById("inputLogradouro").removeAttribute("disabled")
+        document.getElementById("inputNumero").removeAttribute("disabled")
+        document.getElementById("inputCidade").removeAttribute("disabled")
+        document.getElementById("inputBairro").removeAttribute("disabled")
+        document.getElementById("inputCEP").removeAttribute("disabled")
+        document.getElementById("selectUFAtual").style.display = 'none'
+        document.getElementById("selectUF").style.display = 'block'
+        document.getElementById("editarDados").style.display = 'none'
+        document.getElementById("salvarDados").style.display = 'inline'
+        document.getElementById("bntInserirGastos").style.display = 'none'
+        document.getElementById("formularioGastos").style.display = 'none'
+    });
+
+    document.getElementById("bntInserirGastos").addEventListener('click', () => {
+        document.getElementById("bntInserirGastos").style.display = 'none'
+        document.getElementById("formularioAcademia").style.display = 'none'
+        document.getElementById("editarDados").style.display = 'none'
+        document.getElementById("formularioGastos").style.display = 'block'
+    });
+</script>

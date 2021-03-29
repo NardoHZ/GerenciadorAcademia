@@ -1,0 +1,451 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+
+    <div class="main-content">
+        <div class="container">
+            <% if(admin.tipo === 'chefe'){ %>
+            <h2 class="titulos">Relatórios</h2>
+
+            <br>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Filtro</span>
+                </div>
+                <select id="select" name="marca" class="form-control" required>
+                    <% if(selecionado == '00') { %>
+                    <option selected value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '01') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option selected value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '02') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option selected value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '03') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option selected value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '04') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option selected value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '05') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option selected value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '06') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option selected value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '07') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option selected value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '08') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option selected value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '09') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option selected value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '10') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option selected value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '11') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option selected value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+
+                    <% if(selecionado == '12') { %>
+                    <option value="/administrador/relatorios/listar">Todos</option>
+                    <option value="/administrador/relatorios/listar/01">Janeiro</option>
+                    <option value="/administrador/relatorios/listar/02">Fevereiro</option>
+                    <option value="/administrador/relatorios/listar/03">Março</option>
+                    <option value="/administrador/relatorios/listar/04">Abril</option>
+                    <option value="/administrador/relatorios/listar/05">Maio</option>
+                    <option value="/administrador/relatorios/listar/06">Junho</option>
+                    <option value="/administrador/relatorios/listar/07">Julho</option>
+                    <option value="/administrador/relatorios/listar/08">Agosto</option>
+                    <option value="/administrador/relatorios/listar/09">Setembro</option>
+                    <option value="/administrador/relatorios/listar/10">Outubro</option>
+                    <option value="/administrador/relatorios/listar/11">Novembro</option>
+                    <option selected value="/administrador/relatorios/listar/12">Dezembro</option>
+                    <% }%>
+                </select>
+            </div>
+
+            <br>
+
+            <div class="table-responsive-md tabelas">
+                <table class="table table-sm">
+                    <caption class="text-white-50">Relatório de clientes</caption>
+                    <thead class="tabela-head">
+                        <tr>
+                            <th>Total de clientes</th>
+                            <th>Ativos</th>
+                            <th>Inativos</th>
+                            <th>Homens</th>
+                            <th>Mulheres</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tabelas-linhas">
+                            <td><%= relatorio.numClientes %></td>
+                            <td><%= relatorio.numClientesAtivos %></td>
+                            <td><%= relatorio.numClientesInativos %></td>
+                            <td><%= relatorio.numHomens %></td>
+                            <td><%= relatorio.numMulheres %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive-md tabelas">
+                <table class="table table-sm">
+                    <caption class="text-white-50">Relatório de mensalidades</caption>
+                    <thead class="tabela-head">
+                        <tr>
+                            <th>Em aberto</th>
+                            <th>Valor em aberto</th>
+                            <th>Pagas</th>
+                            <th>Valor pago</th>
+                            <th>Em atraso</th>
+                            <th>Valor em atraso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tabelas-linhas">
+                            <td><%= relatorio.numMensalidadeReceber %></td>
+                            <td>
+                                <% let valorReceber = relatorio.totalReceber.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorReceber %>
+                            </td>
+                            <td><%= relatorio.numMensalidadePago %></td>
+                            <td>
+                                <% let valorEntradas = relatorio.totalEntradas.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorEntradas %>
+                            </td>
+                            <td><%= relatorio.numMensalidadeAtraso %></td>
+                            <td>
+                                <% let valorAtraso = relatorio.totalAtraso.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorAtraso %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive-md tabelas">
+                <table class="table table-sm">
+                    <caption class="text-white-50">Relatório de formas de pagamentos</caption>
+                    <thead class="tabela-head">
+                        <tr>
+                            <th>Dinheiro</th>
+                            <th>Valor</th>
+                            <th>Cartão</th>
+                            <th>Valor</th>
+                            <th>Depósito</th>
+                            <th>Valor</th>
+                            <th>Transferência</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tabelas-linhas">
+                            <td><%= relatorio.numDinheiro %></td>
+                            <td>
+                                <% let valorDinheiro = relatorio.valorDinheiro.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorDinheiro %>
+                            </td>
+                            <td><%= relatorio.numCartao %></td>
+                            <td>
+                                <% let valorCartao = relatorio.valorCartao.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorCartao %>
+                            </td>
+                            <td><%= relatorio.numDeposito %></td>
+                            <td>
+                                <% let valorDeposito = relatorio.valorDeposito.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorDeposito %>
+                            </td>
+                            <td><%= relatorio.numTransferencia %></td>
+                            <td>
+                                <% let valorTransferencia = relatorio.valorTransferencia.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorTransferencia %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <% let totalGasto = 0 %>
+            <div class="table-responsive-md tabelas">
+
+                <table class="table table-sm">
+                    <caption class="text-white-50"> Relatório de gastos </caption>
+                    <thead class="tabela-head">
+                        <tr>
+                            <th>Valor</th>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% gastos.forEach(gasto => {%>
+                        <% totalGasto = totalGasto + gasto.valor %>
+                        <% let data = new Date(gasto.createdAt) %>
+                        <% let dataFormatada = data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear() %>
+
+                        <tr class="tabelas-linhas">
+                            <td><%= 
+                                gasto.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+                                %></td>
+                            <td><%= gasto.descricao %></td>
+                            <td><%= dataFormatada %></td>
+                        </tr>
+                        <%}) %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive-md tabelas">
+                <table class="table table-sm">
+                    <caption class="text-white-50">Relatório de lucros</caption>
+                    <thead class="tabela-head">
+                        <tr>
+                            <th>Receita</th>
+                            <th>Despesas</th>
+                            <th>Lucro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tabelas-linhas">
+                            <td>
+                                <% valorEntradas = relatorio.totalEntradas.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%= valorEntradas %>
+                            </td>
+                            <td>
+                                <% let valorGasto = totalGasto.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}); %>
+                                <%= valorGasto %>
+                            </td>
+                            <td>
+                                <% let lucro = relatorio.totalEntradas - totalGasto%>
+                                <%= lucro.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}); %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <% } %>
+            <h2 class="titulos">Relatórios Diários</h2>
+
+            <br>
+
+            <div class="table-responsive-md tabelas">
+                <table class="table table-sm">
+                    <caption class="text-white-50">Relatório diário de mensalidades</caption>
+                    <thead class="tabela-head">
+                        <tr>
+                            <th>Mensalidades</th>
+                            <th>Receita</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tabelas-linhas">
+                            <td>
+                                <%= entradaDiaria[0].numMensalidades %>
+                            </td>
+                            <td>
+                                <% if(entradaDiaria[0].valor != null) {%>
+                                <%= entradaDiaria[0].valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%}else {%>
+                                <% let nenhum = 0 %>
+                                <%= nenhum.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                                <%}%>
+                            </td>
+                            <td>
+                                <% let dataAtual = new Date() %>
+                                <% let dataAtualFormatada = dataAtual.getDate() + "/" + (dataAtual.getMonth() + 1) + "/" + dataAtual.getFullYear() %>
+                                <%= dataAtualFormatada %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive-md tabelas">
+                <table class="table table-sm">
+                    <caption class="text-white-50">Relatório diário de clientes</caption>
+                    <thead class="tabela-head">
+                        <tr>
+                            <th>Total de clientes</th>
+                            <th>Homens</th>
+                            <th>Mulheres</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tabelas-linhas">
+                            <td><%= relatorio.numClientesDiario %></td>
+                            <td><%= relatorio.numHomensDiario %></td>
+                            <td><%= relatorio.numMulheresDiario %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+<%- include ../../partials/footer.ejs %>

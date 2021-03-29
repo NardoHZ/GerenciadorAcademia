@@ -1,0 +1,100 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Meus Dados</h2>
+        <br>
+        <div class="formularios">
+            <form method="POST" action="/administrador/dados/update">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputNome">Nome</label>
+                        <input name="inputNome" value="<%= administrador.nome %>" type="text" class="form-control"
+                            id="inputNome" placeholder="Nome" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSobrenome">Sobrenome</label>
+                        <input name="inputSobrenome" value="<%= administrador.sobrenome %>" type="text" class="form-control"
+                            placeholder="Sobrenome" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputCPF">Sexo</label>
+                        <input name="inputCPF" value="<%= administrador.sexo %>" type="text" class="form-control" id="inputCPF"
+                            disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputDate">Data de Nascimento</label>
+                        <input name="inputDate" value="<%= administrador.dataNascimento %>" type="date" class="form-control"
+                            id="inputDate" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputCPF">CPF</label>
+                        <input name="inputCPF" value="<%= administrador.cpf %>" type="text" class="form-control" id="inputCPF"
+                            disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputTelefone">Telefone</label>
+                        <input name="inputTelefone" value="<%= administrador.telefone %>" type="text" class="form-control"
+                            id="inputTelefone" placeholder="(99)9999-9999" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail">Email</label>
+                        <input name="inputEmail" value="<%= administrador.email %>" type="email" class="form-control"
+                            id="inputEmail" placeholder="example@email.com" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">CEP</label>
+                        <input value="<%= administrador.enderecoadministrador.cep %>" type="text" class="form-control" name="inputCEP" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputLogradouro">Logradouro</label>
+                        <input value="<%= administrador.enderecoadministrador.logradouro %>" type="text" class="form-control" name="inputLogradouro"
+                            disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputCidade">Cidade</label>
+                        <input value="<%= administrador.enderecoadministrador.cidade %>" type="text" class="form-control" name="inputCidade" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputBairro">Bairro</label>
+                        <input value="<%= administrador.enderecoadministrador.bairro %>" type="text" class="form-control name=" inputBairro" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputNumero">Número</label>
+                        <input value="<%= administrador.enderecoadministrador.numero %>" type="number" class="form-control" name="inputNumero"
+                            disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputUF">UF</label>
+                        <select class="form-control" name="" id="selectUF" disabled>
+                            <option value=""><%= administrador.enderecoadministrador.uf %></option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="">Status</label>
+                        <% if(administrador.ativo == 1){ %>
+                        <input value="Ativo" type="text" class="form-control" disabled>
+                        <% }else{ %>
+                        <input value="Inativo" type="text" class="form-control" disabled>
+                        <% } %>
+                    </div>
+                </div>
+                <a href="/administrador/editar/dados" class="btn btn-warning">Editar dados</a>
+                <a href="/administrador/editar/senha/" class="btn btn-danger">Editar senha</a>
+            </form>
+        </div>
+    </div>
+</body>
+<%- include ../../partials/footer.ejs %>

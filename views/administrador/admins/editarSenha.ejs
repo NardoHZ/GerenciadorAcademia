@@ -1,0 +1,35 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Alteração de Senha</h2>
+        <br>
+        <div class="formularios">
+            <div class="form-row">
+                <form action="/administrador/senha/update" method="POST">
+                    <div class="form-group col-md-12">
+                        <label for="inputSenhaAtual">Senha Atual</label>
+                        <input placeholder="Senha atual" name="senhaAtual" type="password" class="form-control" id="inputSenhaAtual" required>
+                    </div>
+                    <div class=" form-group col-md-12">
+                        <label for="inputNovaSenha">Nova Senha</label>
+                        <input placeholder="Nova senha" name="novaSenha" type="password" min="6" class="form-control" id="inputNovaSenha" min="6" required>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputConfirmarNovaSenha">Confirmar Nova Senha</label>
+                        <input placeholder="Confirmar senha" name="confirmarNovaSenha" type="password" min="6" class="form-control" id="inputConfirmarNovaSenha" required>
+                    </div>
+                    <div class="form-group col-md-12" id="mensagem" class="mensagem" style="color: red;">
+                        <%= messages.error %>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-success">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+<%- include ../../partials/footer.ejs %>   

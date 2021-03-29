@@ -1,0 +1,95 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Clientes</h2>
+
+        <br>
+
+        <div class="table-responsive-md tabelas">
+            <table class="table table-sm" id="tabela">
+                <thead class="tabela-head">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>IMC</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <% exameBiometrico.forEach(exame => { %>>
+
+                    <tr class="tabelas-linhas">
+                        <td><%= exame.cliente.nome %></td>
+                        <td><%= exame.cliente.sobrenome %></td>
+                        <td><%= exame.peso.toFixed(3) %></td>
+                        <td><%= exame.altura.toFixed(2) %></td>
+                        <td><%= exame.imc.toFixed(2) %></td>
+                        <td>
+                            <% let dataAtual = new Date(exame.createdAt) %>
+                            <% let dataAtualFormatada = dataAtual.getDate() + "/" + (dataAtual.getMonth() + 1) + "/" + dataAtual.getFullYear() %>
+                            <%= dataAtualFormatada %>
+                        </td>
+                        <td>
+                            <form class="inline" method="POST" action="/exame/delete"
+                                onsubmit="confirmarDelecao(event, this)">
+                                <input type="hidden" name="exameId" value="<%= exame.id %>">
+                                <input type="hidden" name="clienteId" value="<%= exame.cliente.id %>">
+                                <button class="btn btn-sm btn-danger">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <div class="formularios" style="margin-top: -15px;">
+            <form action="/insert/imc" method="POST" onsubmit="confirmarInsercao(event, this)">
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputPeso">Peso</label>
+                        <input placeholder="Peso" value="" type="text" class="form-control" name="inputPeso"
+                            id="inputPeso" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputAltura">Altura</label>
+                        <input placeholder="Altura" value="" type="text" class="form-control" name="inputAltura"
+                            id="inputAltura" required>
+                    </div>
+                    <input type="hidden" value="<%= clienteId %>" name="inputID">
+                </div>
+                <button type="submit" class="btn btn-warning">Adicionar</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+<%- include ../../partials/footer.ejs %>
+<script>
+    function confirmarInsercao(event, form) {
+        event.preventDefault();
+        var decisao = confirm("Você deseja calcular um novo IMC?");
+        if (decisao) {
+            form.submit();
+        }
+    }
+
+    function confirmarDelecao(event, form) {
+        event.preventDefault();
+        var decisao = confirm("Você quer deletar este IMC?");
+        if (decisao) {
+            form.submit();
+        }
+    }
+</script>

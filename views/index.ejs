@@ -1,0 +1,76 @@
+<%- include partials/header.ejs %>
+
+<body>
+
+  <div id="bg">
+    <img src="../img/fundo.jpeg">
+  </div>
+
+  <section>
+    <div class="container">
+      <!-- CONTEÚDO LATERAL -->
+      <div class="row">
+        <div class="col-md-6 d-none d-md-block login-texto">
+          <div class="text-center login-texto">
+            <div class="jumbotron bg-light">
+              <img style="width: 320px;" class="logo-login" src="/img/logo-login.png">
+              <hr>
+              <p class="lead">
+                Bem-vindo ao seu painel de controle administrativo!
+              </p>
+              <p class="lead">
+                Gerêncie aqui os clientes, os pacotes promocionais e as mensalidades.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- FIM CONTEÚDO LATERAL -->
+
+        <!-- FORMULÁRIO -->
+        <div class="col-md-6">
+          <div class="text-center">
+            <div class="modal-dialog text-center">
+              <div class="col-sm-10 main-section">
+                <div class="modal-content">
+                  <span class="h4 mb-4 text-light login-titulo">Login</span>
+
+                  <form action="/autenticacao" method="POST" class="col-12">
+                    <div class="form-group inputIcon" id="user-group">
+                      <input id="email" type="email" name="email" class="form-control" placeholder="Email" required
+                        style="<%= messages.eValido %> <%= messages.eInvalido %>">
+                      <i class="fas fa-at fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="form-group inputIcon" id="password-group">
+                      <input id="senha" type="password" name="senha" class="form-control" placeholder="Senha" required
+                        style="<%= messages.sInvalida %>">
+                      <i class="fas fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <div id="mensagem" class="mensagem" style="color: red; font-size: 14px;">
+                      <%= messages.senhaInvalida %>
+                      <%= messages.emailInvalido %>
+                      <%= messages.emailInativo %>
+                    </div>
+
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-primary btn-block btn-lg mt-3" value="Entrar">
+                    </div>
+                    <div class="">
+                      <span class="text-light">Esqueceu sua senha? <a href="/administrador/password/email">Clique
+                          aqui!</a></span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- FIM FORMULÁRIO -->
+
+      </div>
+    </div>
+  </section>
+</body>
+<%- include partials/footer.ejs %>

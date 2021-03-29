@@ -1,0 +1,67 @@
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/background.ejs %>
+
+<body>
+    <div class="main-content">
+        <h2 class="titulos">Pacotes</h2>
+        <br>
+
+        <div class="form-group" id="filtros">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Filtro</span>
+                </div>
+                <input id="buscarNome" type="text" class="form-control  d-none d-md-block" placeholder="Nome">
+                <input id="buscarDesconto" type="text" class="form-control" placeholder="Taxa de Desconto">
+            </div>
+        </div>
+
+        <div class="table-responsive-md tabelas">
+            <table class="table table-sm" id="tabela">
+                <thead class="tabela-head">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Valor do Desconto</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% pacotes.forEach(pacote => { %>
+                    <% if(pacote.nome !== 'Nenhum'){ %>
+                    <tr class="tabelas-linhas">
+                        <td> <%= pacote.nome %> </td>
+                        <td> <%= pacote.descricao %> </td>
+                        <td>
+                            <%= pacote.taxaDesconto.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                        </td>
+                        <td width="180px">
+                            <form class="inline" method="POST" action="/pacotes/delete"
+                                onsubmit="confirmarDelecao(event, this)">
+                                <a href="/administrador/pacotes/editar/<%= pacote.id %>"
+                                    class="btn btn-sm btn-warning">Editar</a>
+                                <input type="hidden" name="id" value="<%= pacote.id %>">
+                                <button class="btn btn-sm btn-danger">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% }) %>
+                </tbody>
+            </table>
+
+        </div>
+        <a class="btn btn-info" href="/administrador/pacotes/cadastro">Cadastrar pacote</a>
+</body>
+<%- include ../../partials/footer.ejs %>
+<script>
+    function confirmarDelecao(event, form) {
+        event.preventDefault();
+        var decisao = confirm("Você quer deletar este pacote?");
+        if (decisao) {
+            form.submit();
+        }
+    }
+</script>
